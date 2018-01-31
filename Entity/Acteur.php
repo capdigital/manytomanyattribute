@@ -1,21 +1,16 @@
 <?php
-
 namespace App\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ActeurRepository")
  */
 class Acteur
 {
-
     public function __construct()
     {
         $this->filmacteurs = new ArrayCollection();
-        $this->films = new ArrayCollection();
     }
-
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -24,25 +19,17 @@ class Acteur
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Film", mappedBy="acteurs", cascade={"persist"})
-     */
-    private $films;
-
-    /**
      * @ORM\OneToMany(targetEntity="FilmActeur", mappedBy="acteur", cascade={"persist"})
      */
     private $filmacteurs;
-
     /**
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
-
     /**
      * @ORM\Column(name="prenom", type="string", length=255)
      */
     private $prenom;
-
     /**
      * @return mixed
      */
@@ -50,7 +37,6 @@ class Acteur
     {
         return $this->id;
     }
-
     /**
      * @param mixed $id
      */
@@ -58,7 +44,6 @@ class Acteur
     {
         $this->id = $id;
     }
-
     /**
      * @return mixed
      */
@@ -66,7 +51,6 @@ class Acteur
     {
         return $this->nom;
     }
-
     /**
      * @param mixed $nom
      */
@@ -74,7 +58,6 @@ class Acteur
     {
         $this->nom = $nom;
     }
-
     /**
      * @return mixed
      */
@@ -82,7 +65,6 @@ class Acteur
     {
         return $this->prenom;
     }
-
     /**
      * @param mixed $prenom
      */
@@ -90,7 +72,6 @@ class Acteur
     {
         $this->prenom = $prenom;
     }
-
     /**
      * @return mixed
      */
@@ -98,7 +79,6 @@ class Acteur
     {
         return $this->filmacteurs;
     }
-
     /**
      * @param mixed $filmacteurs
      */
@@ -106,7 +86,6 @@ class Acteur
     {
         $this->filmacteurs = $filmacteurs;
     }
-
     /**
      * @return mixed
      */
@@ -114,7 +93,6 @@ class Acteur
     {
         return $this->films;
     }
-
     /**
      * @param mixed $films
      */
@@ -122,8 +100,4 @@ class Acteur
     {
         $this->films = $films;
     }
-
-
-
-
 }
